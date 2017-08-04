@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "133390629751",
+    "firebase_url": "https://historicalapp.firebaseio.com",
+    "project_id": "historicalapp",
+    "storage_bucket": "historicalapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:133390629751:android:55223fb1448432cd",
+        "android_client_info": {
+          "package_name": "com.hfad.historicalapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "133390629751-ndjid3opbkiochadmo27mon84lbs49ir.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJhPsFz_t-Bdy3xSRbTIOEAtdO4JH7W30"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
