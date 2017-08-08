@@ -13,6 +13,7 @@ import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.firebase.client.Firebase;
@@ -43,20 +44,22 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     Location mLastLocation;
     Marker mCurrLocationMarker;
     Firebase mRef;
-
+    Firebase mRefChild , mRefChildLong;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-        //Firebase.setAndroidContext(this);
-        //mRef = new Firebase("https://historicalapp.firebaseio.com/");
 
-        //Firebase mRefChild = mRef.child("Name");
-        //mRefChild.setValue("Jay Swminarayan");
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        Firebase.setAndroidContext(this);
+        mRef = new Firebase("https://historicalapp.firebaseio.com/");
+
+        mRefChild = mRef.child("Lat");
+        mRefChildLong = mRef.child("Long");
     }
 
 
@@ -93,7 +96,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             mGoogleMap.setMyLocationEnabled(true);
         }
     }
-
+      /**
     public void onPause() {
         super.onPause();
 
@@ -102,7 +105,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
             LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient,this);
         }
-    }
+    } */
     protected synchronized void buildGoogleApiClient() {
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(this)
@@ -148,6 +151,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         //move map camera
         mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,11));
 
+        mRefChild.setValue(location.getLatitude());
+        mRefChildLong.setValue(location.getLongitude());
+        Log.d("MapActivity","Locaiton changed to Mumbai");
     }
 
 
